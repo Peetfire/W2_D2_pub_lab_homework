@@ -33,14 +33,10 @@ class TestPub(unittest.TestCase):
         result = self.pub.drinks
         self.assertEqual(expected, result)
 
-    @unittest.skip("delete...")
+    # @unittest.skip("delete...")
     def test_add_drink(self):
-        drink_1 = Drink("Monk IPA", 3.50, 4.7)
-        drink_2 = Drink("Joker IPA", 3.60, 4.5)
-        drink_3 = Drink("Camden Hells", 4.00, 3.9) 
-        drinks = [drink_1, drink_2, drink_3]
-        self.pub.add_drink(drinks)  
-        expected = drinks 
+        self.pub.add_drink(self.drinks)  
+        expected = self.drinks 
         result = self.pub.drinks
         self.assertEqual(expected, result)
 
