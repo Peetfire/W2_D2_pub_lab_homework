@@ -56,6 +56,13 @@ class TestCustomer(unittest.TestCase):
         expected = self.customer.get_no_of_drinks()
         self.assertEqual(expected, result)
 
+    def test_customer_buy_drink(self):
+        drink_1 = Drink("IPA", 5.10, 4.00)
+        self.customer.buy_drink(drink_1)
+        self.assertEqual(1, self.customer.get_no_of_drinks())
+        self.assertEqual(4.90, self.customer.get_wallet())
+        self.assertEqual(4.00, self.customer.get_drunkenness())
+
     
 
     

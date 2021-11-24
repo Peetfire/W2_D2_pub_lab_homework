@@ -30,5 +30,5 @@ class Pub:
         if self.check_age(customer):
             self.increase_till(drink.price)
             self.remove_drink(drink)
-            customer.add_drink(drink)
-            customer.reduce_wallet(drink.price)
+            customer.buy_drink(drink)
+
