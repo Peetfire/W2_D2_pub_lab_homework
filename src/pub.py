@@ -12,3 +12,9 @@ class Pub:
 
     def has_drink(self, drink):
         return drink in self.drinks
+
+    def get_no_of_drinks(self):
+        return len(self.drinks)
+
+    def get_till(self):
+        return self.till

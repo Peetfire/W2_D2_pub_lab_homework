@@ -55,21 +55,21 @@ class TestPub(unittest.TestCase):
         result = self.pub.has_drink("bad name")
         self.assertEqual(expected, result)
 
-    @unittest.skip("delete...")
+    # @unittest.skip("delete...")
     #test with valid and invalid inputs
-    def test_can_choose_drink(self):
-        expected = drink_1
-        result = self.pub.choose_drink()
-        self.assertEqual(expected, result)
+    # def test_can_choose_drink(self):
+    #     expected = drink_1
+    #     result = self.pub.choose_drink()
+    #     self.assertEqual(expected, result)
     
-    @unittest.skip("delete...")
+    # @unittest.skip("delete...")
     #test with valid and invalid inputs
     def test_pub_get_number_of_drinks(self):
         expected = 3
-        result = self.pub.get_drinks()
+        result = self.pub.get_no_of_drinks()
         self.assertEqual(expected, result)
 
-    @unittest.skip("delete...")
+    # @unittest.skip("delete...")
     #test with valid and invalid inputs
     def test_get_till(self):
         expected = 100
@@ -79,11 +79,11 @@ class TestPub(unittest.TestCase):
 
     @unittest.skip("delete...")
     def test_sell_drink(self):
-        self.pub.sell_drink(drink_2, customer)
-        self.assertEqual(16.40, customer.get_wallet())
-        self.assertEqual(1, customer.get_number_of_drinks())
-        self.assertEqual(2,pub.get_number_of_drinks())
-        self.assertEqual(103.60,pub.get_till())
+        self.pub.sell_drink(self.drink_2, self.customer)
+        self.assertEqual(16.40, self.customer.get_wallet())
+        self.assertEqual(1, self.customer.get_number_of_drinks())
+        self.assertEqual(2,self.pub.get_number_of_drinks())
+        self.assertEqual(103.60,self.pub.get_till())
         
 
 
