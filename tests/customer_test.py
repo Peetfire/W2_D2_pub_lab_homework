@@ -5,7 +5,7 @@ from src.drink import Drink
 class TestCustomer(unittest.TestCase):
 
     def setUp(self):
-        self.customer = Customer("Mr Smith", [], 10.00, 19)
+        self.customer = Customer("Mr Smith", [], 10.00, 19, 0)
 
     #@unittest.skip("delete...")
     def test_customer_has_name(self):
@@ -29,6 +29,11 @@ class TestCustomer(unittest.TestCase):
         result = self.customer.age
         expected = 19
         self.assertEqual(expected, result)        
+
+    def test_customer_has_drunkenness(self):
+        result = self.customer.drunkenness
+        expected = 0
+        self.assertEqual(expected, result)  
 
     #@unittest.skip("delete...")
     def test_reduce_wallet(self):
