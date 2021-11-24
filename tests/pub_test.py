@@ -8,12 +8,12 @@ class TestPub(unittest.TestCase):
     
     #@unittest.skip("delete...")
     def setUp(self):
-        drink_1 = Drink("Monk IPA", 3.50, 4.7)
-        drink_2 = Drink("Joker IPA", 3.60, 4.5)
-        drink_3 = Drink("Camden Hells", 4.00, 3.9) 
-        drinks = [drink_1, drink_2, drink_3]
-        customer = Customer("Dave", [], 20.00)
-        self.pub = Pub("The Prancing Pony", 100.00, drinks)
+        self.drink_1 = Drink("Monk IPA", 3.50, 4.7)
+        self.drink_2 = Drink("Joker IPA", 3.60, 4.5)
+        self.drink_3 = Drink("Camden Hells", 4.00, 3.9) 
+        self.drinks = [self.drink_1, self.drink_2, self.drink_3]
+        self.customer = Customer("Dave", [], 20.00)
+        self.pub = Pub("The Prancing Pony", 100.00, self.drinks)
 
     #@unittest.skip("delete...")
     def test_pub_has_name(self):
@@ -23,13 +23,13 @@ class TestPub(unittest.TestCase):
     def test_pub_has_till(self):
         self.assertEqual(100.00, self.pub.till)
 
-    @unittest.skip("delete...")
+    # @unittest.skip("delete...")
     def test_pub_has_drinks(self):
-        drink_1 = Drink("Monk IPA", 3.50, 4.7)
-        drink_2 = Drink("Joker IPA", 3.60, 4.5)
-        drink_3 = Drink("Camden Hells", 4.00, 3.9) 
-        drinks = [drink_1, drink_2, drink_3]
-        expected = drinks
+        # drink_1 = Drink("Monk IPA", 3.50, 4.7)
+        # drink_2 = Drink("Joker IPA", 3.60, 4.5)
+        # drink_3 = Drink("Camden Hells", 4.00, 3.9) 
+        # drinks = [drink_1, drink_2, drink_3]
+        expected = self.drinks
         result = self.pub.drinks
         self.assertEqual(expected, result)
 
@@ -51,7 +51,7 @@ class TestPub(unittest.TestCase):
         result = self.pub.till
         self.assertEqual(expected, result)
 
-    #@unittest.skip("delete...")
+    @unittest.skip("delete...")
     def test_pub_has_drink(self):
         expected = Drink("Joker IPA", 3.60, 4.5).name
         result = self.pub.has_drink("Joker IPA").name
