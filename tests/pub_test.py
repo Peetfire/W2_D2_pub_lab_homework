@@ -12,7 +12,7 @@ class TestPub(unittest.TestCase):
         self.drink_2 = Drink("Joker IPA", 3.60, 4.5)
         self.drink_3 = Drink("Camden Hells", 4.00, 3.9) 
         self.drinks = [self.drink_1, self.drink_2]
-        self.customer = Customer("Dave", [], 20.00)
+        self.customer = Customer("Dave", [], 20.00, 25)
         self.pub = Pub("The Prancing Pony", 100.00, self.drinks)
 
     #@unittest.skip("delete...")
@@ -61,13 +61,6 @@ class TestPub(unittest.TestCase):
         expected = False
         result = self.pub.has_drink("bad name")
         self.assertEqual(expected, result)
-
-    # @unittest.skip("delete...")
-    #test with valid and invalid inputs
-    # def test_can_choose_drink(self):
-    #     expected = drink_1
-    #     result = self.pub.choose_drink()
-    #     self.assertEqual(expected, result)
     
     # @unittest.skip("delete...")
     #test with valid and invalid inputs
