@@ -11,7 +11,7 @@ class TestPub(unittest.TestCase):
         self.drink_1 = Drink("Monk IPA", 3.50, 4.7)
         self.drink_2 = Drink("Joker IPA", 3.60, 4.5)
         self.drink_3 = Drink("Camden Hells", 4.00, 3.9) 
-        self.drinks = [self.drink_1, self.drink_2, self.drink_3]
+        self.drinks = [self.drink_1, self.drink_2]
         self.customer = Customer("Dave", [], 20.00)
         self.pub = Pub("The Prancing Pony", 100.00, self.drinks)
 
@@ -31,10 +31,17 @@ class TestPub(unittest.TestCase):
 
     # @unittest.skip("delete...")
     def test_add_drink(self):
-        self.pub.add_drink(self.drinks)  
-        expected = self.drinks 
-        result = self.pub.drinks
+        self.pub.add_drink([self.drink_3])  
+        expected = 3
+        result = self.pub.get_no_of_drinks()
         self.assertEqual(expected, result)
+
+    @unittest.skip("delete...")
+    def test_remove_drink(self):
+        self.pub.remove_drink(self.drink_2)
+        expected = 2
+        result = self.test_pub_get_number_of_drinks()
+        self.assertAlmostEqual(expected, result)
 
     #@unittest.skip("delete...")
     def test_pub_can_increase_till(self):
@@ -65,7 +72,7 @@ class TestPub(unittest.TestCase):
     # @unittest.skip("delete...")
     #test with valid and invalid inputs
     def test_pub_get_number_of_drinks(self):
-        expected = 3
+        expected = 2
         result = self.pub.get_no_of_drinks()
         self.assertEqual(expected, result)
 
