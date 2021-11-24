@@ -107,7 +107,7 @@ class TestPub(unittest.TestCase):
         self.assertEqual(103.60, self.pub.get_till())
         self.assertTrue(self.pub.check_age(customer))
         
-    @unittest.skip(" ")
+    # @unittest.skip(" ")
     def test_dont_sell_drink(self):
         customer = Customer("Jimmy Cranky", [], 5.00, 17)
         self.pub.sell_drink(self.drink_2, customer)
