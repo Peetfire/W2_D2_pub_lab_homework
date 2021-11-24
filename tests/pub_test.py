@@ -76,16 +76,44 @@ class TestPub(unittest.TestCase):
         result = self.pub.get_till()
         self.assertEqual(expected, result)
 
+    def test_customer_above_legal_age(self):
+        customer = Customer("Mr Smith", [], 10.00, 19)
+        self.assertTrue(self.pub.check_age(customer))
+
+    def test_customer_equals_legal_age(self):
+        customer = Customer("Basil Brush", [], 100.00, 18)
+        self.assertTrue(self.pub.check_age(customer))
+
+    def test_customer_below_leagl_age(self):
+        customer = Customer("Jimmy Cranky", [], 5.00, 17)
+        self.assertFalse(self.pub.check_age(customer))
 
     # @unittest.skip("delete...")
     def test_sell_drink(self):
-        self.pub.sell_drink(self.drink_2, self.customer)
-        self.assertEqual(16.40, self.customer.get_wallet())
-        self.assertEqual(1, self.customer.get_no_of_drinks())
-        self.assertEqual(1,self.pub.get_no_of_drinks())
-        self.assertEqual(103.60,self.pub.get_till())
+        customer = Customer("Mr Smith", [], 10.00, 19)
+        self.pub.sell_drink(self.drink_2, customer)
+        self.assertEqual(6.40, customer.get_wallet())
+        self.assertEqual(1, customer.get_no_of_drinks())
+        self.assertEqual(1, self.pub.get_no_of_drinks())
+        self.assertEqual(103.60, self.pub.get_till())
+        self.assertTrue(self.pub.check_age(customer))
+
+    def test_just_sell_drink(self):
+        customer = Customer("Basil Brush", [], 100.00, 18)
+        self.pub.sell_drink(self.drink_2, customer)
+        self.assertEqual(96.40, customer.get_wallet())
+        self.assertEqual(1, customer.get_no_of_drinks())
+        self.assertEqual(1, self.pub.get_no_of_drinks())
+        self.assertEqual(103.60, self.pub.get_till())
+        self.assertTrue(self.pub.check_age(customer))
         
-
-
-
-    
+    @unittest.skip(" ")
+    def test_dont_sell_drink(self):
+        customer = Customer("Jimmy Cranky", [], 5.00, 17)
+        self.pub.sell_drink(self.drink_2, customer)
+        self.assertEqual(5.00, customer.get_wallet())
+        self.assertEqual(0, customer.get_no_of_drinks())
+        self.assertEqual(2, self.pub.get_no_of_drinks())
+        self.assertEqual(100.00,self.pub.get_till())
+        self.assertFalse(self.pub.check_age(customer))
+        

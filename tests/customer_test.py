@@ -6,8 +6,6 @@ class TestCustomer(unittest.TestCase):
 
     def setUp(self):
         self.customer = Customer("Mr Smith", [], 10.00, 19)
-        self.customer_2 = Customer("Basil Brush", [], 100.00, 18)
-        self.customer_3 = Customer("Jimmy Cranky", [], 5.00, 17)
 
     #@unittest.skip("delete...")
     def test_customer_has_name(self):

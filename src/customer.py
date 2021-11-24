@@ -8,6 +8,9 @@ class Customer:
     def get_wallet(self):
         return self.wallet
 
+    def get_age(self):
+        return self.age
+
     def reduce_wallet(self, amount):
         self.wallet -= amount
 
