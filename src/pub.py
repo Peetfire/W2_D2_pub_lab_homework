@@ -11,5 +11,4 @@ class Pub:
         self.till += amount
 
     def has_drink(self, drink):
-        if drink in self.drinks:
-            return drink
+        return drink in self.drinks

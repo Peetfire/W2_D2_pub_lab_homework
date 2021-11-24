@@ -25,10 +25,6 @@ class TestPub(unittest.TestCase):
 
     # @unittest.skip("delete...")
     def test_pub_has_drinks(self):
-        # drink_1 = Drink("Monk IPA", 3.50, 4.7)
-        # drink_2 = Drink("Joker IPA", 3.60, 4.5)
-        # drink_3 = Drink("Camden Hells", 4.00, 3.9) 
-        # drinks = [drink_1, drink_2, drink_3]
         expected = self.drinks
         result = self.pub.drinks
         self.assertEqual(expected, result)
@@ -47,15 +43,15 @@ class TestPub(unittest.TestCase):
         result = self.pub.till
         self.assertEqual(expected, result)
 
-    @unittest.skip("delete...")
+    # @unittest.skip("delete...")
     def test_pub_has_drink(self):
-        expected = Drink("Joker IPA", 3.60, 4.5).name
-        result = self.pub.has_drink("Joker IPA").name
+        expected = True
+        result = self.pub.has_drink(self.drink_2)
         self.assertEqual(expected, result)
 
-    @unittest.skip("delete...")
+    # @unittest.skip("delete...")
     def test_does_not_have_drink(self):
-        expected = True
+        expected = False
         result = self.pub.has_drink("bad name")
         self.assertEqual(expected, result)
 
