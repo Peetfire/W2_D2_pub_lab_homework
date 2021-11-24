@@ -78,15 +78,15 @@ class TestPub(unittest.TestCase):
 
     def test_customer_above_legal_age(self):
         customer = Customer("Mr Smith", [], 10.00, 19, 0)
-        self.assertTrue(self.pub.check_age(customer))
+        self.assertTrue(self.pub.check_over_age(customer))
 
     def test_customer_equals_legal_age(self):
         customer = Customer("Basil Brush", [], 100.00, 18, 0)
-        self.assertTrue(self.pub.check_age(customer))
+        self.assertTrue(self.pub.check_over_age(customer))
 
     def test_customer_below_leagl_age(self):
         customer = Customer("Jimmy Cranky", [], 5.00, 17, 0)
-        self.assertFalse(self.pub.check_age(customer))
+        self.assertFalse(self.pub.check_over_age(customer))
 
     # @unittest.skip("delete...")
     def test_sell_drink(self):
@@ -96,24 +96,24 @@ class TestPub(unittest.TestCase):
         self.assertEqual(1, customer.get_no_of_drinks())
         self.assertEqual(1, self.pub.get_no_of_drinks())
         self.assertEqual(103.60, self.pub.get_till())
-        self.assertTrue(self.pub.check_age(customer))
-
-    def test_just_sell_drink(self):
-        customer = Customer("Basil Brush", [], 100.00, 18, 0)
-        self.pub.sell_drink(self.drink_2, customer)
-        self.assertEqual(96.40, customer.get_wallet())
-        self.assertEqual(1, customer.get_no_of_drinks())
-        self.assertEqual(1, self.pub.get_no_of_drinks())
-        self.assertEqual(103.60, self.pub.get_till())
-        self.assertTrue(self.pub.check_age(customer))
+        self.assertTrue(self.pub.check_over_age(customer))
         
     # @unittest.skip(" ")
-    def test_dont_sell_drink(self):
+    def test_dont_sell_drink_too_young(self):
         customer = Customer("Jimmy Cranky", [], 5.00, 17, 0)
         self.pub.sell_drink(self.drink_2, customer)
         self.assertEqual(5.00, customer.get_wallet())
         self.assertEqual(0, customer.get_no_of_drinks())
         self.assertEqual(2, self.pub.get_no_of_drinks())
         self.assertEqual(100.00,self.pub.get_till())
-        self.assertFalse(self.pub.check_age(customer))
+        self.assertFalse(self.pub.check_over_age(customer))
+
+    def test_dont_sell_drink_too_drunk(self):
+        customer = Customer("Mr Smith", [], 10.00, 19, 42.42)
+        self.pub.sell_drink(self.drink_2, customer)
+        self.assertEqual(10.00, customer.get_wallet())
+        self.assertEqual(0, customer.get_no_of_drinks())
+        self.assertEqual(2, self.pub.get_no_of_drinks())
+        self.assertEqual(100.00,self.pub.get_till())
+        self.assertTrue(self.pub.check_is_drunk(customer))
         
