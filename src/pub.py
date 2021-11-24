@@ -5,7 +5,7 @@ class Pub:
         self.drinks = drinks
 
     def add_drink(self, new_drinks):
-        self.drinks.extend(new_drinks)
+        self.drinks.append(new_drinks)
 
     def remove_drink(self, drink):
         if drink in self.drinks:
@@ -25,3 +25,6 @@ class Pub:
 
     def sell_drink(self, drink, customer):
         self.increase_till(drink.price)
+        self.remove_drink(drink)
+        customer.add_drink(drink)
+        customer.reduce_wallet(drink.price)

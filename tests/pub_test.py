@@ -31,16 +31,16 @@ class TestPub(unittest.TestCase):
 
     # @unittest.skip("delete...")
     def test_add_drink(self):
-        self.pub.add_drink([self.drink_3])  
+        self.pub.add_drink(self.drink_3)  
         expected = 3
         result = self.pub.get_no_of_drinks()
         self.assertEqual(expected, result)
 
-    @unittest.skip("delete...")
+    # @unittest.skip("delete...")
     def test_remove_drink(self):
         self.pub.remove_drink(self.drink_2)
-        expected = 2
-        result = self.test_pub_get_number_of_drinks()
+        expected = 1
+        result = self.pub.get_no_of_drinks()
         self.assertAlmostEqual(expected, result)
 
     #@unittest.skip("delete...")
@@ -84,12 +84,12 @@ class TestPub(unittest.TestCase):
         self.assertEqual(expected, result)
 
 
-    @unittest.skip("delete...")
+    # @unittest.skip("delete...")
     def test_sell_drink(self):
         self.pub.sell_drink(self.drink_2, self.customer)
         self.assertEqual(16.40, self.customer.get_wallet())
-        self.assertEqual(1, self.customer.get_number_of_drinks())
-        self.assertEqual(2,self.pub.get_number_of_drinks())
+        self.assertEqual(1, self.customer.get_no_of_drinks())
+        self.assertEqual(1,self.pub.get_no_of_drinks())
         self.assertEqual(103.60,self.pub.get_till())
         
 
